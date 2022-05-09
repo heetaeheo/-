@@ -138,6 +138,20 @@ class HomeMainFragment
         )
     }
 
+    private val popular by lazy {
+        ModelRecyclerAdapter<HomeItemModel, HomeMainViewModel>(
+            listOf(),
+            viewModel,
+            resourcesProvider,
+            object : HomeItemListener {
+                override fun onClickItem(model: HomeItemModel) {
+                    // TODO 22.01.25 start detail market activity when clicked
+                    Toast.makeText(context, model.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+    }
+
     override fun initViews() {
 
         super.initViews()
@@ -178,7 +192,7 @@ class HomeMainFragment
                 )
 
             }
-
+            popularRecycler.adapter = newSaleItemsAdapter
             newSaleItemRecyclerView.adapter = newSaleItemsAdapter
 //            newSaleItemRecyclerView.addItemDecoration(
 //                DividerItemDecoration(
