@@ -11,7 +11,6 @@ interface SuggestRepository
 
     fun suggestBirth() : List<SuggestItemModel>
 
-    fun findItemByCategory(suggestCategory: SuggestCategory): List<SuggestItemModel>
 
     fun suggestAnniversary() : List<SuggestItemModel>
 
