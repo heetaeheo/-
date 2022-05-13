@@ -15,6 +15,7 @@ import com.example.YUmarket.widget.adapter.viewholder.home.TownMarketViewHolder
 import com.example.YUmarket.widget.adapter.viewholder.homemain.NearbyMarketViewHolder
 import com.example.YUmarket.widget.adapter.viewholder.homemain.NewSaleItemViewHolder
 import com.example.YUmarket.widget.adapter.viewholder.restaurant.RestaurantViewHolder
+import com.example.YUmarket.widget.adapter.viewholder.suggest.SuggestViewHolder
 
 object ViewHolderMapper {
     @Suppress("UNCHECKED_CAST")
@@ -62,6 +63,13 @@ object ViewHolderMapper {
             CellType.CUSTOMER_SERVICE_CELL -> {
                 CSViewHolder(
                     ViewholderCsItemBinding.inflate(inflater),
+                    viewModel,
+                    resourcesProvider
+                )
+            }
+            CellType.SUGGEST_CELL -> {
+                SuggestViewHolder(
+                    ViewholderSuggestSeasonBinding.inflate(inflater),
                     viewModel,
                     resourcesProvider
                 )

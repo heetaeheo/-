@@ -8,11 +8,11 @@ interface SuggestRepository
 
 
     fun seasonMarket() : List<SuggestItemModel>
-
-    fun suggestBirth() : List<SuggestItemModel>
-
-
-    fun suggestAnniversary() : List<SuggestItemModel>
+//
+//    fun suggestBirth() : List<SuggestItemModel>
+//
+//
+//    fun suggestAnniversary() : List<SuggestItemModel>
 
     fun suggestHobby() : List<SuggestItemModel>
 

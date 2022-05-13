@@ -40,13 +40,13 @@ class NearbyMarketViewHolder(
 
             // 기본은 closed
             // Open일 경우에만 상태를 변경한다.
-            if (model.isMarketOpen) {
-                nearByMarketState.text = resourcesProvider.getString(R.string.market_open)
-                nearByMarketState.setChipBackgroundColorResource(R.color.yellow)
-            }
+        //    if (model.isMarketOpen) {
+      //          nearByMarketState.text = resourcesProvider.getString(R.string.market_open)
+       //         nearByMarketState.setChipBackgroundColorResource(R.color.yellow)
+       //     }
 
-            nearbyMarketDistance.text = String.format("%.1fkm", model.distance)
-            nearbyMarketWorkDay.text = "연중무휴연중무휴연중무휴" // TODO remove hard coded
+      nearbyMarketDistance.text = String.format("%.1fkm", model.distance)
+        //    nearbyMarketWorkDay.text = "연중무휴연중무휴연중무휴" // TODO remove hard coded
 
             // Extension을 사용하여 Glide로 ImageView에 이미지 로드
             nearbyMarketImageView.load(model.marketImageUrl)

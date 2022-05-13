@@ -27,14 +27,11 @@ class SuggestViewHolder(
 
         with(binding){
             ImageView.load(model.marketImageUrl,16f)
-            Name.text = model.marketName // data
+            name.text = model.marketName // data
         }
 
 
     }
-
-
-
     override fun bindViews(model: SuggestItemModel, listener: AdapterListener) {
       if(listener is SuggestListener){
           with(binding){

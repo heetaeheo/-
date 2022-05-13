@@ -23,7 +23,7 @@
         />
 
     <TextView
-        android:id="@+id/Name"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:layout_marginStart="24dp"
@@ -32,9 +32,11 @@
         app:layout_constraintEnd_toEndOf="@id/ImageView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/ImageView"
-        app:layout_constraintbottom_toBottomOf="@id/ImageView"
+        app:layout_constraintTop_toBottomOf="@id/ImageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteY="134dp"
-        tools:text="식당 이름" />
+        tools:text="스토어 이름"
+         />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

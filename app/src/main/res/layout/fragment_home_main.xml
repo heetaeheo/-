@@ -16,130 +16,39 @@
             app:iconifiedByDefault="false"
             app:queryHint="검색어를 입력해주세요"/>
 
-        <GridLayout
-            android:layout_gravity="center"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:orientation="horizontal"
-            >
+            android:padding="20dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/season"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="계절별 서비스를 확인해보세요"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                android:id="@+id/foodCategoryListButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_my_info" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/season_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/season" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/food" />
 
-            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/martCategoryListButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_my_info" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mart" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/serviceCategoryListButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_my_info" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/service" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/fashionCategoryListButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_my_info" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/fashion" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/accessoryCategoryListButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_my_info" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/accessory" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/etcCategoryListButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_my_info" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cs_etc" />
-
-            </LinearLayout>
-
-        </GridLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -151,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="실시간 인기 상품"
+                android:text="요즘 인기 많은 취미들이에요!"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
