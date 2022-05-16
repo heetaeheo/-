@@ -23,14 +23,17 @@ class HomeMainViewModel(
     private val _marketData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
     val marketData: LiveData<HomeMainState> = _marketData
 
-    private val _itemData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
-    val itemData: LiveData<HomeMainState> = _itemData
+//    private val _itemData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
+//    val itemData: LiveData<HomeMainState> = _itemData
 
     private val _suggestData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
     val suggestData: LiveData<HomeMainState> = _suggestData
 
     private val _seasonData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
     val seasonData: LiveData<HomeMainState> = _seasonData
+
+    private val _fixData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
+    val fixData : LiveData<HomeMainState> = _fixData
 
 
     private lateinit var allNewSaleItemsList: List<HomeItemModel>
@@ -40,9 +43,14 @@ class HomeMainViewModel(
         // 더 이상 fetchData가 initState에서 실행되지 않고 위치 정보를 불러온 뒤에
         // 실행 되므로 위치 정보를 불러왔는지 확인할 필요가 없음
         fetchMarketData()
-        fetchItemData()
+     //   fetchItemData()
         fetchHobbyMarket()
         fetchSeasonMarket()
+    }
+
+
+    private suspend fun fetchFixMarket(){
+
     }
 
 
@@ -83,32 +91,32 @@ class HomeMainViewModel(
         }
     }
 
-    private suspend fun fetchItemData() {
-        if (itemData.value !is HomeMainState.Success<*>) {
-            _itemData.value = HomeMainState.Loading
-
-            allNewSaleItemsList = homeRepository.getAllNewSaleItems().map {
-                it.copy(type = CellType.HOME_MAIN_ITEM_CELL)
-            }
-            _itemData.value = HomeMainState.ListLoaded
-        }
-    }
-
-    fun reloadData(): Job {
-        _marketData.value = HomeMainState.Loading
-        _itemData.value = HomeMainState.Loading
-        return fetchData()
-    }
-
-    fun setItemFilter(category: HomeListCategory) {
-        if (::allNewSaleItemsList.isInitialized) {
-            _itemData.value = HomeMainState.Success(
-                // 임시로 CellType을 ViewModel에서 변경
-                modelList = allNewSaleItemsList.filter {
-                    it.homeListCategory == category
-                }
-            )
-        }
-
-    }
+//    private suspend fun fetchItemData() {
+//        if (itemData.value !is HomeMainState.Success<*>) {
+//            _itemData.value = HomeMainState.Loading
+//
+//            allNewSaleItemsList = homeRepository.getAllNewSaleItems().map {
+//                it.copy(type = CellType.HOME_MAIN_ITEM_CELL)
+//            }
+//            _itemData.value = HomeMainState.ListLoaded
+//        }
+//    }
+//
+//    fun reloadData(): Job {
+//        _marketData.value = HomeMainState.Loading
+//        _itemData.value = HomeMainState.Loading
+//        return fetchData()
+//    }
+//
+//    fun setItemFilter(category: HomeListCategory) {
+//        if (::allNewSaleItemsList.isInitialized) {
+//            _itemData.value = HomeMainState.Success(
+//                // 임시로 CellType을 ViewModel에서 변경
+//                modelList = allNewSaleItemsList.filter {
+//                    it.homeListCategory == category
+//                }
+//            )
+//        }
+//
+//    }
 }

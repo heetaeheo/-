@@ -66,7 +66,7 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding>() {
 
         binding.profileImageChange.setOnClickListener { loadImage() }
 
-        binding.darkSwitch.setOnClickListener { darkMode() }
+       /// binding.darkSwitch.setOnClickListener { darkMode() }
 
 
         binding.noticeText.setOnClickListener { popUp() }
@@ -137,13 +137,13 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding>() {
         backStack()
     }
 
-    private fun darkMode() {
-        if (check == binding.darkSwitch.isChecked) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-    }
+//    private fun darkMode() {
+//        if (check == binding.darkSwitch.isChecked) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        }
+//    }
 
 
     private fun openCSCenter() {

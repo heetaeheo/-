@@ -7,19 +7,18 @@
         android:title="@string/home" />
     <item
         android:id="@+id/order_list"
-        android:icon="@drawable/ic_my_info"
-        android:title="@string/order_list" />
+        android:icon="@drawable/chatting"
+        android:title="@string/chatting" />
     <item
         android:id="@+id/like"
-        android:icon="@drawable/ic_my_info"
-        android:title="@string/like" />
+        android:icon="@drawable/store"
+        android:title="@string/store" />
     <item
         android:id="@+id/map"
-        android:icon="@drawable/ic_my_info"
+        android:icon="@drawable/map"
         android:title="@string/map" />
     <item
         android:id="@+id/my_info"
         android:icon="@drawable/ic_my_info"
         android:title="@string/my_info" />
-
 </menu>

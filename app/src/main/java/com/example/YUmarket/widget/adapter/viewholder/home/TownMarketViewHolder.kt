@@ -34,7 +34,7 @@ class TownMarketViewHolder(
             likeCountTextView.text = "1" // data
             reviewCountTextView.text = "1" // data
 
-            likeTextView.text = resourcesProvider.getString(R.string.like)
+           // likeTextView.text = resourcesProvider.getString(R.string.like)
             reviewTextView.text = resourcesProvider.getString(R.string.review)
 
             when(model.isMarketOpen) {

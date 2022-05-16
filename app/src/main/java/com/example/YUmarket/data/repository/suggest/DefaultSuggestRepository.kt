@@ -53,6 +53,52 @@ class DefaultSuggestRepository : SuggestRepository {
         )
         return mockList
     }
+
+    override fun fixMarket(): List<SuggestItemModel> {
+        val mockList = listOf(
+            SuggestItemModel(
+                6,
+                CellType.SUGGEST_CELL,
+                "https://velog.velcdn.com/images/heetaeheo/post/92f2b5e7-55b0-4ad9-9d92-fdf617c3ce14/image.png",
+                "봄",
+                0f,
+                SuggestCategory.SEASON_SPRING
+            ),
+            SuggestItemModel(
+                0,
+                CellType.SUGGEST_CELL,
+                "https://velog.velcdn.com/images/heetaeheo/post/79cff16b-4e9a-456d-86d8-cc189a5fb6a0/image.jpg",
+                "필터청소",
+                0.7f,
+                SuggestCategory.SEASON_SPRING
+            ),
+            SuggestItemModel(
+                1,
+                CellType.SUGGEST_CELL,
+                "https://velog.velcdn.com/images/heetaeheo/post/8beb62c0-1455-467d-9411-b2b53c4502e9/image.jpg",
+                "에어컨 수리",
+                0.5F,
+                SuggestCategory.SEASON_SPRING
+            ),
+            SuggestItemModel(
+                3,
+                CellType.SUGGEST_CELL,
+                "https://velog.velcdn.com/images/heetaeheo/post/eb96be15-184e-494d-addb-16c84d4e8418/image.jpg",
+                "방문 세차",
+                1.2F,
+                SuggestCategory.SEASON_SPRING
+            ),
+            SuggestItemModel(
+                4,
+                CellType.SUGGEST_CELL,
+                "https://velog.velcdn.com/images/heetaeheo/post/4109fcdf-df3a-4e6c-9653-2d7df4da9554/image.jpg",
+                "이사",
+                2.5F,
+                SuggestCategory.SEASON_SPRING
+            )
+        )
+        return mockList
+    }
 /*
     override fun suggestBirth(): List<SuggestItemModel> {
 

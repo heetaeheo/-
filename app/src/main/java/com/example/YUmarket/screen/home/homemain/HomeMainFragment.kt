@@ -2,8 +2,12 @@ package com.example.YUmarket.screen.home.homemain
 
 
 import android.content.Context
+import android.graphics.Typeface
 import android.os.Looper
 import android.os.Looper.*
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
 import com.example.YUmarket.util.provider.ResoucesProvider
 import android.view.View
 import android.widget.AdapterView
@@ -83,34 +87,34 @@ class HomeMainFragment
             }
         }
 
-        itemData.observe(viewLifecycleOwner) {
-            when (it) {
-                // TODO 22.01.25 add more state handle logics
-                is HomeMainState.Uninitialized -> {
-
-                }
-
-                is HomeMainState.Loading -> {
-
-                }
-
-                is HomeMainState.ListLoaded -> with(binding.newSaleItemSpinner) {
-                    viewModel.setItemFilter(categories[selectedItemPosition])
-                }
-
-                is HomeMainState.Success<*> -> {
-                    newSaleItemsAdapter.submitList(it.modelList)
-                }
-
-                is HomeMainState.Error -> {
-                    Toast.makeText(
-                        context,
-                        R.string.cannot_load_data,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
+//        itemData.observe(viewLifecycleOwner) {
+//            when (it) {
+//                // TODO 22.01.25 add more state handle logics
+//                is HomeMainState.Uninitialized -> {
+//
+//                }
+//
+//                is HomeMainState.Loading -> {
+//
+//                }
+//
+//                is HomeMainState.ListLoaded -> with(binding.newSaleItemSpinner) {
+//                    viewModel.setItemFilter(categories[selectedItemPosition])
+//                }
+//
+//                is HomeMainState.Success<*> -> {
+//                    newSaleItemsAdapter.submitList(it.modelList)
+//                }
+//
+//                is HomeMainState.Error -> {
+//                    Toast.makeText(
+//                        context,
+//                        R.string.cannot_load_data,
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//        }
         suggestData.observe(viewLifecycleOwner){
             when(it){
                 // TODO 22.01.25 add more state handle logics
@@ -192,19 +196,19 @@ class HomeMainFragment
         )
     }
 
-    private val newSaleItemsAdapter by lazy {
-        ModelRecyclerAdapter<HomeItemModel, HomeMainViewModel>(
-            listOf(),
-            viewModel,
-            resourcesProvider,
-            object : HomeItemListener {
-                override fun onClickItem(model: HomeItemModel) {
-                    // TODO 22.01.25 start detail market activity when clicked
-                    Toast.makeText(context, model.toString(), Toast.LENGTH_SHORT).show()
-                }
-            }
-        )
-    }
+//    private val newSaleItemsAdapter by lazy {
+//        ModelRecyclerAdapter<HomeItemModel, HomeMainViewModel>(
+//            listOf(),
+//            viewModel,
+//            resourcesProvider,
+//            object : HomeItemListener {
+//                override fun onClickItem(model: HomeItemModel) {
+//                    // TODO 22.01.25 start detail market activity when clicked
+//                    Toast.makeText(context, model.toString(), Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        )
+//    }
 
     private val suggestAdapter by lazy {
         ModelRecyclerAdapter<SuggestItemModel, HomeMainViewModel>(
@@ -279,18 +283,14 @@ class HomeMainFragment
 //            val thread = Thread(PagerRunnable())
 //            thread.start()
 
+//            val spannable = SpannableStringBuilder(binding.season.text)
+//            spannable.setSpan(
+//                StyleSpan(Typeface.BOLD),
+//                14,
+//                18,
+//                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//            )
 
-
-            // 새로운 할인상품에 사용할 Spinner의 Adapter 설정
-            newSaleItemSpinner.adapter = ArrayAdapter(
-                requireContext(),
-                R.layout.support_simple_spinner_dropdown_item,
-                adapterList
-            )
-
-            // 현재 Fragment가 AdapterView.OnItemSelectedListener를 상속받아
-            // Item이 선택됐을때 무엇을 할지 정의함
-            newSaleItemSpinner.onItemSelectedListener = this@HomeMainFragment
 
             // 근처 마켓 RecyclerView 설정
             nearbyMarketRecyclerView.adapter = nearbyMarketAdapter
@@ -331,8 +331,8 @@ class HomeMainFragment
                 )
 
             }
-            // popularRecycler.adapter = suggestAdapter
-            newSaleItemRecyclerView.adapter = newSaleItemsAdapter
+
+//            newSaleItemRecyclerView.adapter = newSaleItemsAdapter
 //            newSaleItemRecyclerView.addItemDecoration(
 //                DividerItemDecoration(
 //                    context, LinearLayoutManager.HORIZONTAL
@@ -346,13 +346,13 @@ class HomeMainFragment
 
     }
 
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        TODO("Not yet implemented")
+    }
 
 
-
-
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
-        viewModel.setItemFilter(categories[position])
+//    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
+//        viewModel.setItemFilter(categories[position])
 
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

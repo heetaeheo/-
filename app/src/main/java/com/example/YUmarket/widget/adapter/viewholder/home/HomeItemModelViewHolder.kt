@@ -38,7 +38,7 @@ class HomeItemModelViewHolder(
             itemReviewCountTextView.text = model.reviewQuantity.toString()
             itemReviewTextView.text = resourcesProvider.getString(R.string.review)
             itemLikeCountTextView.text = model.likeQuantity.toString()
-            itemLikeTextView.text = resourcesProvider.getString(R.string.like)
+            //itemLikeTextView.text = resourcesProvider.getString(R.string.)
 
             itemNameTextView.text = model.itemName
             originPriceTextView.text =

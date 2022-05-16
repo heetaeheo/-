@@ -14,6 +14,9 @@ interface SuggestRepository
 //
 //    fun suggestAnniversary() : List<SuggestItemModel>
 
+    fun fixMarket() : List<SuggestItemModel>
+
+
     fun suggestHobby() : List<SuggestItemModel>
 
 

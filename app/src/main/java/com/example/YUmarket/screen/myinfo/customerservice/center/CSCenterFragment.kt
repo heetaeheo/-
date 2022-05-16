@@ -66,7 +66,7 @@ class CSCenterFragment : BaseFragment<FragmentCsCenterBinding>() {
     }
 
 
-    private fun YUcall() {
+    private fun Marketcall() {
         val myuri = Uri.parse("tel:00011112222")
         var intent = Intent(Intent.ACTION_CALL, myuri)
         startActivity(intent)
@@ -85,7 +85,7 @@ class CSCenterFragment : BaseFragment<FragmentCsCenterBinding>() {
             .setMessage(items)
             .setPositiveButton("통화 걸기",
                 DialogInterface.OnClickListener { dialog, id ->
-                    YUcall()
+                    Marketcall()
                 })
             .setNegativeButton("통화 취소",
                 DialogInterface.OnClickListener { dialog, id ->
