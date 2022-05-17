@@ -1,8 +1,13 @@
 package com.example.YUmarket.screen.home.homemain
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.YUmarket.R
 import com.example.YUmarket.data.repository.restaurant.HomeRepository
 import com.example.YUmarket.data.repository.suggest.SuggestRepository
 import com.example.YUmarket.model.CellType
@@ -35,6 +40,9 @@ class HomeMainViewModel(
     private val _fixData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
     val fixData : LiveData<HomeMainState> = _fixData
 
+    private val _slidData = MutableLiveData<Drawable>()
+    val slideData :LiveData<Drawable> =  _slidData
+
 
     private lateinit var allNewSaleItemsList: List<HomeItemModel>
     private lateinit var suggestItemList: List<SuggestItemModel>
@@ -46,11 +54,19 @@ class HomeMainViewModel(
      //   fetchItemData()
         fetchHobbyMarket()
         fetchSeasonMarket()
+        slideImage()
     }
 
 
     private suspend fun fetchFixMarket(){
 
+    }
+
+
+
+
+    private suspend fun slideImage(){
+        _slidData.value = BitmapDrawable(BitmapFactory.decodeFile(R.drawable.airfilter.toString()))
     }
 
 

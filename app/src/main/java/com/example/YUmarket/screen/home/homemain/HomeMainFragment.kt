@@ -3,6 +3,8 @@ package com.example.YUmarket.screen.home.homemain
 
 import android.content.Context
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.os.Handler
 import android.os.Looper
 import android.os.Looper.*
 import android.text.Spannable
@@ -16,6 +18,10 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.example.YUmarket.R
 import com.example.YUmarket.databinding.FragmentHomeMainBinding
 import com.example.YUmarket.model.homelist.HomeItemModel
@@ -33,13 +39,21 @@ import com.example.YUmarket.widget.adapter.listener.home.TownMarketListener
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.logging.Handler
+import java.lang.Math.abs
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeMainFragment
     : BaseFragment<FragmentHomeMainBinding>(),
     AdapterView.OnItemSelectedListener {
 
+
+
+
+
+    private lateinit var viewPager2: ViewPager2
+    private val sliderHandler = Handler()
 
     private val viewModel by viewModel<HomeMainViewModel>()
     private val activityViewModel by sharedViewModel<MainViewModel>()
@@ -54,10 +68,10 @@ class HomeMainFragment
     private val categories = HomeListCategory.values().drop(1)
 
 
-
-
     override fun observeData() = with(viewModel) {
         // marketData가 변경되면 update
+
+
         marketData.observe(viewLifecycleOwner) {
             when (it) {
                 // TODO 22.01.19 add more state handle logics
@@ -115,8 +129,8 @@ class HomeMainFragment
 //                }
 //            }
 //        }
-        suggestData.observe(viewLifecycleOwner){
-            when(it){
+        suggestData.observe(viewLifecycleOwner) {
+            when (it) {
                 // TODO 22.01.25 add more state handle logics
                 is HomeMainState.Uninitialized -> {
 
@@ -131,7 +145,7 @@ class HomeMainFragment
                 }
 
                 is HomeMainState.Success<*> -> {
-                   suggestAdapter.submitList(it.modelList)
+                    suggestAdapter.submitList(it.modelList)
                 }
 
                 is HomeMainState.Error -> {
@@ -143,8 +157,8 @@ class HomeMainFragment
                 }
             }
         }
-        seasonData.observe(viewLifecycleOwner){
-            when(it){
+        seasonData.observe(viewLifecycleOwner) {
+            when (it) {
                 // TODO 22.01.25 add more state handle logics
                 is HomeMainState.Uninitialized -> {
 
@@ -179,6 +193,8 @@ class HomeMainFragment
                 viewModel.fetchData()
             }
         }
+
+
     }
 
     private val nearbyMarketAdapter by lazy {
@@ -224,8 +240,8 @@ class HomeMainFragment
         )
     }
 
-    private val seasonAdapter by lazy{
-        ModelRecyclerAdapter<SuggestItemModel,HomeMainViewModel>(
+    private val seasonAdapter by lazy {
+        ModelRecyclerAdapter<SuggestItemModel, HomeMainViewModel>(
             listOf(),
             viewModel,
             resourcesProvider,
@@ -263,19 +279,61 @@ class HomeMainFragment
 //        currentPosition += 1
 //    }
 
+    private val sliderRunnable = Runnable {
+        viewPager2.currentItem = viewPager2.currentItem + 1
+    }
+
+
+
     override fun initViews() {
 
         super.initViews()
 
 
+        viewPager2 = binding.pager
+
+        val slideritems: MutableList<SliderItem> = ArrayList()
+        slideritems.add(SliderItem(R.drawable.airfilter))
+        slideritems.add(SliderItem(R.drawable.spring))
+        slideritems.add(SliderItem(R.drawable.housefix))
+        slideritems.add(SliderItem(R.drawable.homeapplicances))
+
+
+        viewPager2.adapter = SliderAdater(slideritems, viewPager2)
+
+        viewPager2.clipToPadding = false
+        viewPager2.offscreenPageLimit = 4
+        viewPager2.clipChildren = false
+        viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer(30))
+        compositePageTransformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.85f + r * 0.25f
+        }
+
+        viewPager2.setPageTransformer(compositePageTransformer)
+
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                sliderHandler.removeCallbacks(sliderRunnable)
+                sliderHandler.postDelayed(sliderRunnable, 3000)
+            }
+
+        })
+
+
         // Spinner의 Adapter에 사용할 List
         // 마켓의 업종을 나타내는 String
-        val adapterList = categories.map {
-            getString(it.categoryNameId)
-        }
+//        val adapterList = categories.map {
+//            getString(it.categoryNameId)
+//        }
 
         with(binding) {
 
+            searchView.isSubmitButtonEnabled = true
             // 광고 auto slide
 //            val adapter = ViewPagerAdapter()
 //            pager.adapter = adapter
@@ -283,15 +341,15 @@ class HomeMainFragment
 //            val thread = Thread(PagerRunnable())
 //            thread.start()
 
-//            val spannable = SpannableStringBuilder(binding.season.text)
-//            spannable.setSpan(
-//                StyleSpan(Typeface.BOLD),
-//                14,
-//                18,
-//                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-//            )
+            val spannable = SpannableStringBuilder(popular.text)
+            spannable.setSpan(
+                StyleSpan(Typeface.BOLD),
+                10,
+                13,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
 
-
+            popular.text = spannable
             // 근처 마켓 RecyclerView 설정
             nearbyMarketRecyclerView.adapter = nearbyMarketAdapter
 
@@ -319,8 +377,8 @@ class HomeMainFragment
             // 한줄에 2개씩 띄우도록 설정(spanCount)
             nearbyMarketRecyclerView.layoutManager = GridLayoutManager(
                 requireContext(),
-                2,
-                GridLayoutManager.VERTICAL,
+                1,
+                GridLayoutManager.HORIZONTAL,
                 false
             )
 
@@ -338,8 +396,6 @@ class HomeMainFragment
 //                    context, LinearLayoutManager.HORIZONTAL
 //                )
 //            )
-
-
 
 
         }
@@ -366,3 +422,12 @@ class HomeMainFragment
 
     }
 }
+
+//검색 뒤로가기 할때 쓰임
+//override fun onBackPressed() {
+//    if (!home_search_searchView.isIconified) {
+//        home_search_searchView.isIconified = true
+//    } else {
+//        super.onBackPressed()
+//    }
+//}

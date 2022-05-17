@@ -49,10 +49,10 @@
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_email.xml" value="0.25" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_home_list.xml" value="0.1" />
-        <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_home_main.xml" value="0.33" />
+        <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_home_main.xml" value="0.15168539325842698" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_like.xml" value="0.3359375" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_map.xml" value="0.1" />
-        <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_my_info.xml" value="0.20909090909090908" />
+        <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_my_info.xml" value="0.22" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_order_list.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_personal.xml" value="0.1" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_restaurant_list.xml" value="0.3233695652173913" />
@@ -60,6 +60,7 @@
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/fragment_terms.xml" value="0.1" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/notice_popup.xml" value="0.3359375" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/page.xml" value="0.3359375" />
+        <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/slide_item_container.xml" value="0.16246215943491424" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/viewholder_cs.xml" value="0.1" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/viewholder_cs_item.xml" value="0.21" />
         <entry key="..\:/Users/HeeTae/AndroidStudioProjects/YU Market 0.2_1/app/src/main/res/layout/viewholder_home_item.xml" value="0.18" />

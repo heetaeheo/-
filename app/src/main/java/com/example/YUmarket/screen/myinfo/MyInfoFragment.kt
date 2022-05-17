@@ -64,10 +64,8 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding>() {
 
         binding.terms.setOnClickListener { openTerms() }
 
-        binding.profileImageChange.setOnClickListener { loadImage() }
-
-       /// binding.darkSwitch.setOnClickListener { darkMode() }
-
+        // 이미지 view를 눌렀을때 이미지 변동하도록 변경하기
+        binding.profileImage.setOnClickListener { loadImage() }
 
         binding.noticeText.setOnClickListener { popUp() }
 

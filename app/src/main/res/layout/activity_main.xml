@@ -8,6 +8,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        android:background="@color/base"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="0dp"
@@ -40,6 +41,8 @@
             android:layout_height="32dp"
             android:layout_marginRight="10dp"
             android:layout_gravity="right"
+            android:background="@color/base"
+
             android:src="@drawable/itemcart" />
 
     </androidx.appcompat.widget.Toolbar>

@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_my_info"
+        android:icon="@drawable/home"
         android:title="@string/home" />
     <item
         android:id="@+id/order_list"
@@ -19,6 +19,6 @@
         android:title="@string/map" />
     <item
         android:id="@+id/my_info"
-        android:icon="@drawable/ic_my_info"
+        android:icon="@drawable/people"
         android:title="@string/my_info" />
 </menu>

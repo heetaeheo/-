@@ -12,12 +12,16 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
-            app:queryHint="검색어를 입력해주세요"/>
+            app:queryHint="검색어를 입력해주세요"
+            />
 
-        <androidx.viewpager.widget.ViewPager
+
+
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="150dp" />
@@ -31,10 +35,10 @@
 
             <TextView
                 android:id="@+id/season"
-                android:layout_width="wrap_content"
+                android:layout_width="164sp"
                 android:layout_height="wrap_content"
-                android:text="계절별 서비스를 확인해보세요"
-                android:textSize="20sp"
+                android:text="다가오는 봄, 필요한 서비스를 찾아보세요"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +47,6 @@
                 android:id="@+id/showMoreSeason"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="더보기"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/season"
@@ -73,10 +76,21 @@
                 android:layout_width="164dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:bufferType="spannable"
                 android:text="우리 동네에서 인기 있는 취미활동이에요"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/showMorehobby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/popular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/popular" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -92,40 +106,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp">
 
-            <TextView
-                android:id="@+id/newSaleItemTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/new_sale_item"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/newSaleItemSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/newSaleItemTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/newSaleItemTextView" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/newSaleItemRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/newSaleItemTextView" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
@@ -136,11 +117,11 @@
 
             <TextView
                 android:id="@+id/nearbyMarketTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="145dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="@string/nearby_market"
-                android:textSize="20sp"
+                android:text="가까운 곳에서 빠르게 거래해보세요"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -148,7 +129,6 @@
                 android:id="@+id/showMoreTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="@string/show_more"
                 app:layout_constraintBottom_toBottomOf="@id/nearbyMarketTextView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -165,6 +145,41 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/annival"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="5월의 기념일을 준비해보세요"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/showMoreAnnival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기"
+                app:layout_constraintBottom_toBottomOf="@id/annival"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/annival" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/annivalRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/annival" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>
