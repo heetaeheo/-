@@ -15,6 +15,16 @@
             android:id="@+id/action_homeMainFragment_to_map"
             app:destination="@id/mapFragment2"
             />
+        <action
+            android:id="@+id/action_homeMainFragment_to_homeSuggestFragement"
+            app:destination="@id/homeSuggestFragement"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_homeMainFragment_to_homeSuggestActivity"
+            app:destination="@id/homeSuggestActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -34,5 +44,17 @@
             android:id="@+id/action_mapFragment2_to_homeMainFragment"
             app:destination="@id/homeMainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/homeSuggestFragement"
+        android:name="com.example.YUmarket.screen.home.suggest.HomeSuggestFragement"
+        android:label="HomeSuggestFragement" >
+        <action
+            android:id="@+id/action_homeSuggestFragement_to_homeMainFragment"
+            app:destination="@id/homeMainFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/homeSuggestActivity"
+        android:name="com.example.YUmarket.screen.home.suggest.HomeSuggestActivity"
+        android:label="HomeSuggestActivity" />
 
 </navigation>

@@ -1,19 +1,15 @@
 package com.example.YUmarket.screen.home.homemain
 
 
-import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.os.Handler
-import android.os.Looper
-import android.os.Looper.*
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import com.example.YUmarket.util.provider.ResoucesProvider
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -24,23 +20,21 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.YUmarket.R
 import com.example.YUmarket.databinding.FragmentHomeMainBinding
-import com.example.YUmarket.model.homelist.HomeItemModel
 import com.example.YUmarket.model.homelist.SuggestItemModel
 import com.example.YUmarket.model.homelist.TownMarketModel
 import com.example.YUmarket.model.homelist.category.HomeListCategory
-import com.example.YUmarket.screen.MainActivity
 import com.example.YUmarket.screen.MainState
 import com.example.YUmarket.screen.MainViewModel
 import com.example.YUmarket.screen.base.BaseFragment
+import com.example.YUmarket.screen.home.suggest.HomeSuggestActivity
+import com.example.YUmarket.widget.SliderAdater
 import com.example.YUmarket.widget.adapter.ModelRecyclerAdapter
-import com.example.YUmarket.widget.adapter.listener.home.HomeItemListener
 import com.example.YUmarket.widget.adapter.listener.home.SuggestListener
 import com.example.YUmarket.widget.adapter.listener.home.TownMarketListener
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.lang.Math.abs
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -50,7 +44,7 @@ class HomeMainFragment
 
 
 
-
+    private lateinit var position : String
 
     private lateinit var viewPager2: ViewPager2
     private val sliderHandler = Handler()
@@ -192,6 +186,7 @@ class HomeMainFragment
             if (it is MainState.Success) {
                 viewModel.fetchData()
             }
+
         }
 
 
@@ -240,6 +235,27 @@ class HomeMainFragment
         )
     }
 
+//    private val seasonAdapter by lazy {
+//        ModelRecyclerAdapter<SuggestItemModel, HomeMainViewModel>(
+//            listOf(),
+//            viewModel,
+//            resourcesProvider,
+//            object : SuggestListener {
+//                override fun onClickItem(model: SuggestItemModel) {
+//                    // TODO 22.01.25 start detail market activity when clicked
+//                    val data = model.marketName
+//                    val bundle = Bundle()
+//                    bundle.putString("data",data)
+//                    view?.let { it1 ->
+//                        Navigation.findNavController(it1)
+//                            .navigate(R.id.action_homeMainFragment_to_homeSuggestFragement,bundle)
+//                    }
+//                }
+//            }
+//        )
+//    }
+
+
     private val seasonAdapter by lazy {
         ModelRecyclerAdapter<SuggestItemModel, HomeMainViewModel>(
             listOf(),
@@ -248,7 +264,16 @@ class HomeMainFragment
             object : SuggestListener {
                 override fun onClickItem(model: SuggestItemModel) {
                     // TODO 22.01.25 start detail market activity when clicked
-                    Toast.makeText(context, model.toString(), Toast.LENGTH_SHORT).show()
+                    val data = model.marketName
+                    val intent = Intent(context,HomeSuggestActivity::class.java)
+
+                    intent.putExtra("data",data)
+
+                    view?.let { it1 ->
+                        Navigation.findNavController(it1)
+                            .navigate(R.id.action_homeMainFragment_to_homeSuggestActivity)
+                    }
+                    startActivity(intent)
                 }
             }
         )
@@ -282,7 +307,6 @@ class HomeMainFragment
     private val sliderRunnable = Runnable {
         viewPager2.currentItem = viewPager2.currentItem + 1
     }
-
 
 
     override fun initViews() {

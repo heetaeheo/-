@@ -11,14 +11,6 @@ class DefaultSuggestRepository : SuggestRepository {
     override fun seasonMarket(): List<SuggestItemModel> {
         val mockList = listOf(
             SuggestItemModel(
-                6,
-                CellType.SUGGEST_CELL,
-               "https://velog.velcdn.com/images/heetaeheo/post/92f2b5e7-55b0-4ad9-9d92-fdf617c3ce14/image.png",
-                "봄",
-                0f,
-                SuggestCategory.SEASON_SPRING
-            ),
-            SuggestItemModel(
                 0,
                 CellType.SUGGEST_CELL,
                 "https://velog.velcdn.com/images/heetaeheo/post/79cff16b-4e9a-456d-86d8-cc189a5fb6a0/image.jpg",
@@ -223,7 +215,7 @@ class DefaultSuggestRepository : SuggestRepository {
                 3,
                 CellType.SUGGEST_CELL,
                 "https://velog.velcdn.com/images/heetaeheo/post/834ea989-a13d-4705-8ea0-d58b724c60ba/image.jpg",
-                 "요리 교실",
+                "요리 교실",
                 1.5f,
                 SuggestCategory.HOBBY
             ),

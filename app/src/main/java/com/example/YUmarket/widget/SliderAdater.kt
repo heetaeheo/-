@@ -1,4 +1,4 @@
-package com.example.YUmarket.screen.home.homemain
+package com.example.YUmarket.widget
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.YUmarket.R
+import com.example.YUmarket.screen.home.homemain.SliderItem
 
 class SliderAdater internal constructor(
     sliderItems : MutableList<SliderItem>,

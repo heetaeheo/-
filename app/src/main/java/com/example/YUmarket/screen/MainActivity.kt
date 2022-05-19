@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.isGone
 import androidx.navigation.NavHost
 import androidx.navigation.ui.setupWithNavController
+import com.example.YUmarket.MyApplication
 import com.example.YUmarket.R
 import com.example.YUmarket.data.entity.location.LocationLatLngEntity
 import com.example.YUmarket.databinding.ActivityMainBinding
@@ -113,6 +114,7 @@ class MainActivity
                 is MainState.Success -> {
                     locationLoading.isGone = true
                     locationTitleTextView.text = it.mapSearchInfoEntity.fullAddress
+                    MyApplication.prefs.myEditText = locationTitleTextView.text.toString()
                 }
 
                 is MainState.Error -> {
@@ -128,6 +130,8 @@ class MainActivity
         // 22.01.19 BottomNavigationView의 동작을 Controller를 이용하여 설정
         // by 정남진
         bottomNav.setupWithNavController(navController)
+
+
 
 
 //        locationTitleTextView.setOnClickListener {
