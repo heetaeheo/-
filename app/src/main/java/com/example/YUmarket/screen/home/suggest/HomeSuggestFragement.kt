@@ -1,8 +1,14 @@
 package com.example.YUmarket.screen.home.suggest
 
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.YUmarket.R
 import com.example.YUmarket.databinding.FragmentSuggestBinding
+import com.example.YUmarket.screen.MainActivity
 import com.example.YUmarket.screen.base.BaseFragment
 
 class HomeSuggestFragement : BaseFragment<FragmentSuggestBinding>() {
@@ -14,27 +20,41 @@ class HomeSuggestFragement : BaseFragment<FragmentSuggestBinding>() {
     override fun observeData() {}
 
 
+    override fun initState() {
+        super.initState()
+    }
+
     override fun initViews() = with(binding) {
         super.initViews()
 
-        val nameData = arguments?.getString("data")
-        name.text = nameData?.toString()
+        //  name.text = arguments?.getString("pass")
+
+        var data = arguments?.getString("nameData")
+        name.text = data.toString()
+
+        back.setOnClickListener {
+            activity?.let {
+                var intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+            }
+            backStack()
+        }
+    }
 
 
-        binding.back.setOnClickListener {
-            view?.let { it ->
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_homeSuggestFragement_to_homeMainFragment)
+    private fun backStack() {
+        activity?.finish()
+    }
+
+    companion object {
+        const val TAG = "HomeSuggestFragment"
+
+        fun newInstance(): HomeSuggestFragement {
+            return HomeSuggestFragement().apply {
+
             }
         }
     }
 
 
-
-    private fun backStack() {
-        view?.let { it1 ->
-            Navigation.findNavController(it1).popBackStack()
-        }
-
-    }
 }

@@ -155,15 +155,7 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding>() {
         activity?.finish()
     }
 
-    private fun darkModeCheck() {
-        val currentNightMode = Configuration.UI_MODE_NIGHT_MASK
-        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
 
-        } else {
-
-        }
-
-    }
 
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 //        super.onActivityResult(requestCode, resultCode, data)

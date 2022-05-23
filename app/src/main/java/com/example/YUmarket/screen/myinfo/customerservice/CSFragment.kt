@@ -38,8 +38,6 @@ class CSFragment : BaseFragment<FragmentCsBinding>() {
 
     private lateinit var viewAdapter : HomeListFragmentPagerAdapter
 
-    private val activityViewModel by sharedViewModel<CSListViewModel>()
-
    // private val args by navArgs<CSFragmentArgs>()
 
     private val viewModel by viewModel<CSListViewModel>()

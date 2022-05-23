@@ -3,6 +3,7 @@ package com.example.YUmarket.screen.home.homemain
 
 import android.content.Intent
 import android.graphics.Typeface
+import android.os.Bundle
 import android.os.Handler
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -27,6 +28,7 @@ import com.example.YUmarket.screen.MainState
 import com.example.YUmarket.screen.MainViewModel
 import com.example.YUmarket.screen.base.BaseFragment
 import com.example.YUmarket.screen.home.suggest.HomeSuggestActivity
+import com.example.YUmarket.screen.home.suggest.HomeSuggestFragement
 import com.example.YUmarket.widget.SliderAdater
 import com.example.YUmarket.widget.adapter.ModelRecyclerAdapter
 import com.example.YUmarket.widget.adapter.listener.home.SuggestListener
@@ -267,42 +269,22 @@ class HomeMainFragment
                     val data = model.marketName
                     val intent = Intent(context,HomeSuggestActivity::class.java)
 
+//                    val bundle = Bundle()
+//                    bundle.putString("pass",data.toString())
+//
+//                    val fragmentData = HomeSuggestFragement()
+//                    fragmentData.arguments = bundle
+//                    view?.let { it1 ->
+//                        Navigation.findNavController(it1).navigate(R.id.action_homeMainFragment_to_homeSuggestActivity,bundle)
+//                    }
                     intent.putExtra("data",data)
-
-                    view?.let { it1 ->
-                        Navigation.findNavController(it1)
-                            .navigate(R.id.action_homeMainFragment_to_homeSuggestActivity)
-                    }
                     startActivity(intent)
+                   // startActivity(dataIntent)
+
                 }
             }
         )
     }
-
-    // 광고 viewPager
-//    var currentPosition = 0;
-//
-//    val handler = android.os.Handler(getMainLooper()){
-//        setPage()
-//        true
-//    }
-//
-//    inner class PagerRunnable : Runnable {
-//        override fun run() {
-//            while (true) {
-//                Thread.sleep(3000)
-//                handler.sendEmptyMessage(0)
-//
-//
-//            }
-//        }
-//    }
-
-//    private fun setPage() = with(binding) {
-//        if (currentPosition == 5) currentPosition = 0
-//        pager.setCurrentItem(currentPosition, true)
-//        currentPosition += 1
-//    }
 
     private val sliderRunnable = Runnable {
         viewPager2.currentItem = viewPager2.currentItem + 1
@@ -358,12 +340,7 @@ class HomeMainFragment
         with(binding) {
 
             searchView.isSubmitButtonEnabled = true
-            // 광고 auto slide
-//            val adapter = ViewPagerAdapter()
-//            pager.adapter = adapter
-//
-//            val thread = Thread(PagerRunnable())
-//            thread.start()
+
 
             val spannable = SpannableStringBuilder(popular.text)
             spannable.setSpan(
@@ -413,6 +390,7 @@ class HomeMainFragment
                 )
 
             }
+
 
 //            newSaleItemRecyclerView.adapter = newSaleItemsAdapter
 //            newSaleItemRecyclerView.addItemDecoration(
