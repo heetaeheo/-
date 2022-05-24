@@ -129,14 +129,14 @@ class DefaultSuggestRepository : SuggestRepository {
             )
         )
         return mockList
-    }
+    }*/
 
     override fun suggestAnniversary(): List<SuggestItemModel> {
         val mockList = listOf(
             SuggestItemModel(
                 0,
                 CellType.SUGGEST_CELL,
-                "https://picsum.photos/200",
+                "https://velog.velcdn.com/images/heetaeheo/post/f99ef524-b4d0-4f0e-a2e4-fe152f033224/image.png",
                 "꽃집",
                 2.7f,
                 SuggestCategory.ANNIVERSARY
@@ -144,7 +144,7 @@ class DefaultSuggestRepository : SuggestRepository {
             SuggestItemModel(
                 1,
                 CellType.SUGGEST_CELL,
-                "https://picsum.photos/200",
+                "https://velog.velcdn.com/images/heetaeheo/post/249325f6-fb68-4fdf-8c4b-88aa9cd1f673/image.jpg",
                 "케이크",
                 1.2f,
                 SuggestCategory.ANNIVERSARY
@@ -152,7 +152,7 @@ class DefaultSuggestRepository : SuggestRepository {
             SuggestItemModel(
                 2,
                 CellType.SUGGEST_CELL,
-                "https://picsum.photos/200",
+                "https://velog.velcdn.com/images/heetaeheo/post/39d9c60d-665c-4379-aa2c-3937b35a6815/image.jpg",
                 "파티룸",
                 0.9f,
                 SuggestCategory.ANNIVERSARY
@@ -160,7 +160,7 @@ class DefaultSuggestRepository : SuggestRepository {
             SuggestItemModel(
                 3,
                 CellType.SUGGEST_CELL,
-                "https://picsum.photos/200",
+                "https://velog.velcdn.com/images/heetaeheo/post/686b7fb1-d815-48e1-b39f-061d79362654/image.jpg",
                 "장난감 가게",
                 1.5f,
                 SuggestCategory.ANNIVERSARY
@@ -168,7 +168,7 @@ class DefaultSuggestRepository : SuggestRepository {
             SuggestItemModel(
                 4,
                 CellType.SUGGEST_CELL,
-                "https://picsum.photos/200",
+                "https://velog.velcdn.com/images/heetaeheo/post/01750680-a819-4982-9368-9c682852edc2/image.jpg",
                 "레스토랑",
                 1.2f,
                 SuggestCategory.ANNIVERSARY
@@ -176,14 +176,14 @@ class DefaultSuggestRepository : SuggestRepository {
             SuggestItemModel(
                 5,
                 CellType.SUGGEST_CELL,
-                "https://picsum.photos/200",
+                "https://velog.velcdn.com/images/heetaeheo/post/f369733b-6d8b-4f30-bca4-59143c7eb355/image.jpg",
                 "쥬얼리",
                 1.5f,
                 SuggestCategory.ANNIVERSARY
             )
         )
         return mockList
-    } */
+    }
 
     override fun suggestHobby(): List<SuggestItemModel> {
         val mockList = listOf(

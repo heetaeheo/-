@@ -17,8 +17,7 @@
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
             app:queryHint="검색어를 입력해주세요"
-            android:background="@drawable/rec"
-            />
+            android:background="@drawable/rec" />
 
 
 

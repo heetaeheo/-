@@ -12,7 +12,7 @@ interface SuggestRepository
 //    fun suggestBirth() : List<SuggestItemModel>
 //
 //
-//    fun suggestAnniversary() : List<SuggestItemModel>
+    fun suggestAnniversary() : List<SuggestItemModel>
 
     fun fixMarket() : List<SuggestItemModel>
 

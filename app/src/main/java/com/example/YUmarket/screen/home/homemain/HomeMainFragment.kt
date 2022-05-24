@@ -46,7 +46,6 @@ class HomeMainFragment
 
 
 
-    private lateinit var position : String
 
     private lateinit var viewPager2: ViewPager2
     private val sliderHandler = Handler()
@@ -96,35 +95,6 @@ class HomeMainFragment
                 else -> Unit
             }
         }
-
-//        itemData.observe(viewLifecycleOwner) {
-//            when (it) {
-//                // TODO 22.01.25 add more state handle logics
-//                is HomeMainState.Uninitialized -> {
-//
-//                }
-//
-//                is HomeMainState.Loading -> {
-//
-//                }
-//
-//                is HomeMainState.ListLoaded -> with(binding.newSaleItemSpinner) {
-//                    viewModel.setItemFilter(categories[selectedItemPosition])
-//                }
-//
-//                is HomeMainState.Success<*> -> {
-//                    newSaleItemsAdapter.submitList(it.modelList)
-//                }
-//
-//                is HomeMainState.Error -> {
-//                    Toast.makeText(
-//                        context,
-//                        R.string.cannot_load_data,
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//        }
         suggestData.observe(viewLifecycleOwner) {
             when (it) {
                 // TODO 22.01.25 add more state handle logics
@@ -170,6 +140,35 @@ class HomeMainFragment
 
                 is HomeMainState.Success<*> -> {
                     seasonAdapter.submitList(it.modelList)
+                }
+
+                is HomeMainState.Error -> {
+                    Toast.makeText(
+                        context,
+                        R.string.cannot_load_data,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+        annivalData.observe(viewLifecycleOwner) {
+            when (it) {
+                // TODO 22.01.25 add more state handle logics
+                is HomeMainState.Uninitialized -> {
+
+                }
+
+                is HomeMainState.Loading -> {
+
+                }
+
+                is HomeMainState.ListLoaded -> {
+
+                }
+
+                is HomeMainState.Success<*> -> {
+                    annivalAdapter.submitList(it.modelList)
                 }
 
                 is HomeMainState.Error -> {
@@ -230,8 +229,11 @@ class HomeMainFragment
             resourcesProvider,
             object : SuggestListener {
                 override fun onClickItem(model: SuggestItemModel) {
-                    // TODO 22.01.25 start detail market activity when clicked
-                    Toast.makeText(context, model.toString(), Toast.LENGTH_SHORT).show()
+                    val data = model.marketName
+                    val intent = Intent(context, HomeSuggestActivity::class.java)
+
+                    intent.putExtra("data", data)
+                    startActivity(intent)
                 }
             }
         )
@@ -256,6 +258,36 @@ class HomeMainFragment
 //            }
 //        )
 //    }
+
+    private val annivalAdapter by lazy{
+        ModelRecyclerAdapter<SuggestItemModel,HomeMainViewModel>(
+            listOf(),
+            viewModel,
+            resourcesProvider,
+            object : SuggestListener {
+                override fun onClickItem(model: SuggestItemModel) {
+                    // TODO 22.01.25 start detail market activity when clicked
+                    val data = model.marketName
+                    val intent = Intent(context, HomeSuggestActivity::class.java)
+
+//                    val bundle = Bundle()
+//                    bundle.putString("pass",data.toString())
+//
+//                    val fragmentData = HomeSuggestFragement()
+//                    fragmentData.arguments = bundle
+//                    view?.let { it1 ->
+//                        Navigation.findNavController(it1).navigate(R.id.action_homeMainFragment_to_homeSuggestActivity,bundle)
+//                    }
+                    intent.putExtra("data", data)
+                    startActivity(intent)
+                    // startActivity(dataIntent)
+
+                }
+            }
+        )
+    }
+
+
 
 
     private val seasonAdapter by lazy {
@@ -285,6 +317,8 @@ class HomeMainFragment
             }
         )
     }
+
+
 
     private val sliderRunnable = Runnable {
         viewPager2.currentItem = viewPager2.currentItem + 1
@@ -363,7 +397,14 @@ class HomeMainFragment
                 GridLayoutManager.HORIZONTAL,
                 false
             )
+            annivalRecyclerView.adapter = annivalAdapter
 
+            annivalRecyclerView.layoutManager = GridLayoutManager(
+                requireContext(),
+                1,
+                GridLayoutManager.HORIZONTAL,
+                false
+            )
             // 계절별 인기있는
 
             seasonRecycler.adapter = seasonAdapter

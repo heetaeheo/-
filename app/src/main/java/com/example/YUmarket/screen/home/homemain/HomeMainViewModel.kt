@@ -43,6 +43,9 @@ class HomeMainViewModel(
     private val _slidData = MutableLiveData<Drawable>()
     val slideData :LiveData<Drawable> =  _slidData
 
+    private val _annivalData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
+    val annivalData : LiveData<HomeMainState> = _annivalData
+
 
     private lateinit var allNewSaleItemsList: List<HomeItemModel>
     private lateinit var suggestItemList: List<SuggestItemModel>
@@ -54,6 +57,7 @@ class HomeMainViewModel(
      //   fetchItemData()
         fetchHobbyMarket()
         fetchSeasonMarket()
+        fetchAnnivalMarket()
         slideImage()
     }
 
@@ -80,6 +84,17 @@ class HomeMainViewModel(
             )
         }
     }
+
+    private suspend fun fetchAnnivalMarket(){
+        if(annivalData.value !is HomeMainState.Success<*>){
+            _annivalData.value = HomeMainState.Loading
+
+            _annivalData.value = HomeMainState.Success(
+                modelList = suggestRepository.suggestAnniversary()
+            )
+        }
+    }
+
 
     private suspend fun fetchHobbyMarket() {
         if (suggestData.value !is HomeMainState.Success<*>) {

@@ -16,6 +16,7 @@ import android.location.LocationProvider
 import android.net.http.SslError
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.os.Message
 import android.view.View
 import android.webkit.*
@@ -39,7 +40,7 @@ class MainActivity
 
 
     private val handler = Handler()
-
+    private var doubleBackToExit = false
 
     companion object {
         val locationPermissions = arrayOf(
@@ -145,8 +146,6 @@ class MainActivity
     }
 
 
-
-
     override fun initViews() = with(binding) {
 
         // 22.01.19 BottomNavigationView의 동작을 Controller를 이용하여 설정
@@ -164,15 +163,13 @@ class MainActivity
         }
         wView.apply {
             webViewClient = client
-           addJavascriptInterface(AndroidBridge(), "TestApp")
-
         }
 
-      val url = "http://3.38.211.77/search.php"
+        // val url = "http://3.38.211.77/search.php"
 
 
-       //wView.loadUrl("https://www.naver.com")
-        wView.loadUrl(url)
+        wView.loadUrl("https://www.naver.com")
+        //wView.loadUrl(url)
         locationTitleTextView.setOnClickListener {
             Sliding()
         }
@@ -188,6 +185,23 @@ class MainActivity
 //            }
 //        }
 
+    override fun onBackPressed() {
+
+
+        if (doubleBackToExit) {
+            finishAffinity()
+        } else {
+            Toast.makeText(this, "종료하서려면 뒤로가기를 한번더 눌러주세요", Toast.LENGTH_SHORT).show()
+            doubleBackToExit = true
+            runDelayed(1500L) {
+                doubleBackToExit = false
+            }
+        }
+    }
+
+    private fun runDelayed(millis: Long, function: () -> Unit) {
+        Handler(Looper.getMainLooper()).postDelayed(function, millis)
+    }
 
     private val client: WebViewClient = object : WebViewClient() {
 
