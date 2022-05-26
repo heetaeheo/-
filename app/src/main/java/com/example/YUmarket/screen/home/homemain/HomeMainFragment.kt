@@ -3,7 +3,6 @@ package com.example.YUmarket.screen.home.homemain
 
 import android.content.Intent
 import android.graphics.Typeface
-import android.os.Bundle
 import android.os.Handler
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -24,11 +23,11 @@ import com.example.YUmarket.databinding.FragmentHomeMainBinding
 import com.example.YUmarket.model.homelist.SuggestItemModel
 import com.example.YUmarket.model.homelist.TownMarketModel
 import com.example.YUmarket.model.homelist.category.HomeListCategory
+import com.example.YUmarket.model.suggest.SliderItem
 import com.example.YUmarket.screen.MainState
 import com.example.YUmarket.screen.MainViewModel
 import com.example.YUmarket.screen.base.BaseFragment
 import com.example.YUmarket.screen.home.suggest.HomeSuggestActivity
-import com.example.YUmarket.screen.home.suggest.HomeSuggestFragement
 import com.example.YUmarket.widget.SliderAdater
 import com.example.YUmarket.widget.adapter.ModelRecyclerAdapter
 import com.example.YUmarket.widget.adapter.listener.home.SuggestListener
@@ -43,8 +42,6 @@ import kotlin.collections.ArrayList
 class HomeMainFragment
     : BaseFragment<FragmentHomeMainBinding>(),
     AdapterView.OnItemSelectedListener {
-
-
 
 
     private lateinit var viewPager2: ViewPager2
@@ -259,8 +256,8 @@ class HomeMainFragment
 //        )
 //    }
 
-    private val annivalAdapter by lazy{
-        ModelRecyclerAdapter<SuggestItemModel,HomeMainViewModel>(
+    private val annivalAdapter by lazy {
+        ModelRecyclerAdapter<SuggestItemModel, HomeMainViewModel>(
             listOf(),
             viewModel,
             resourcesProvider,
@@ -288,8 +285,6 @@ class HomeMainFragment
     }
 
 
-
-
     private val seasonAdapter by lazy {
         ModelRecyclerAdapter<SuggestItemModel, HomeMainViewModel>(
             listOf(),
@@ -299,7 +294,7 @@ class HomeMainFragment
                 override fun onClickItem(model: SuggestItemModel) {
                     // TODO 22.01.25 start detail market activity when clicked
                     val data = model.marketName
-                    val intent = Intent(context,HomeSuggestActivity::class.java)
+                    val intent = Intent(context, HomeSuggestActivity::class.java)
 
 //                    val bundle = Bundle()
 //                    bundle.putString("pass",data.toString())
@@ -309,16 +304,14 @@ class HomeMainFragment
 //                    view?.let { it1 ->
 //                        Navigation.findNavController(it1).navigate(R.id.action_homeMainFragment_to_homeSuggestActivity,bundle)
 //                    }
-                    intent.putExtra("data",data)
+                    intent.putExtra("data", data)
                     startActivity(intent)
-                   // startActivity(dataIntent)
+                    // startActivity(dataIntent)
 
                 }
             }
         )
     }
-
-
 
     private val sliderRunnable = Runnable {
         viewPager2.currentItem = viewPager2.currentItem + 1

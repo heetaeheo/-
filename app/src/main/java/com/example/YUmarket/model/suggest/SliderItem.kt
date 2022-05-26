@@ -1,4 +1,4 @@
-package com.example.YUmarket.screen.home.homemain
+package com.example.YUmarket.model.suggest
 
 class SliderItem internal  constructor(
     val image : Int

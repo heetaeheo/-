@@ -38,13 +38,13 @@ class HomeMainViewModel(
     val seasonData: LiveData<HomeMainState> = _seasonData
 
     private val _fixData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
-    val fixData : LiveData<HomeMainState> = _fixData
+    val fixData: LiveData<HomeMainState> = _fixData
 
     private val _slidData = MutableLiveData<Drawable>()
-    val slideData :LiveData<Drawable> =  _slidData
+    val slideData: LiveData<Drawable> = _slidData
 
     private val _annivalData = MutableLiveData<HomeMainState>(HomeMainState.Uninitialized)
-    val annivalData : LiveData<HomeMainState> = _annivalData
+    val annivalData: LiveData<HomeMainState> = _annivalData
 
 
     private lateinit var allNewSaleItemsList: List<HomeItemModel>
@@ -54,7 +54,7 @@ class HomeMainViewModel(
         // 더 이상 fetchData가 initState에서 실행되지 않고 위치 정보를 불러온 뒤에
         // 실행 되므로 위치 정보를 불러왔는지 확인할 필요가 없음
         fetchMarketData()
-     //   fetchItemData()
+        //   fetchItemData()
         fetchHobbyMarket()
         fetchSeasonMarket()
         fetchAnnivalMarket()
@@ -62,14 +62,12 @@ class HomeMainViewModel(
     }
 
 
-    private suspend fun fetchFixMarket(){
+    private suspend fun fetchFixMarket() {
 
     }
 
 
-
-
-    private suspend fun slideImage(){
+    private suspend fun slideImage() {
         _slidData.value = BitmapDrawable(BitmapFactory.decodeFile(R.drawable.airfilter.toString()))
     }
 
@@ -85,8 +83,8 @@ class HomeMainViewModel(
         }
     }
 
-    private suspend fun fetchAnnivalMarket(){
-        if(annivalData.value !is HomeMainState.Success<*>){
+    private suspend fun fetchAnnivalMarket() {
+        if (annivalData.value !is HomeMainState.Success<*>) {
             _annivalData.value = HomeMainState.Loading
 
             _annivalData.value = HomeMainState.Success(

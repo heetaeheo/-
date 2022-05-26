@@ -3,6 +3,7 @@ package com.example.YUmarket.screen.home.suggest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
@@ -28,11 +29,12 @@ class HomeSuggestActivity : BaseActivity<ActivitySuggestBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right)
+        //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right)
 
         val pass = intent
         var nameData = pass.getStringExtra("data")
 
+        Toast.makeText(this,nameData,Toast.LENGTH_SHORT).show()
 //        val bundle = Bundle()
 //        bundle.putString("nameData",nameData)
         subFragment.arguments?.putString("nameData",nameData)

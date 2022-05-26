@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.YUmarket.R
-import com.example.YUmarket.screen.home.homemain.SliderItem
+import com.example.YUmarket.model.suggest.SliderItem
 
 class SliderAdater internal constructor(
     sliderItems : MutableList<SliderItem>,
